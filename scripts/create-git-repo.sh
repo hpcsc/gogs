@@ -10,9 +10,11 @@ if [[ -z "${REPO_NAME}" ]]; then
     exit 1
 fi;
 
-source ./scripts/_read_user_credentials.sh
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-TOKEN=$(source ./scripts/generate-token.sh "" | tr -d "\n")
+source ${SCRIPT_DIR}/_read_user_credentials.sh
+
+TOKEN=$(source ${SCRIPT_DIR}/generate-token.sh "" | tr -d "\n")
 
 curl -H 'Accept:application/json' \
      -H 'Content-Type:application/json' \

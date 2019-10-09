@@ -6,7 +6,9 @@
 
 set -e
 
-source ./scripts/_read_user_credentials.sh
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+
+source ${SCRIPT_DIR}/_read_user_credentials.sh
 
 echo
 

@@ -3,11 +3,13 @@
 KEY_NAME=${1:-default-key}
 KEY_LOCATION=${2:-~/.ssh/id_rsa.pub}
 
-source ./scripts/_read_user_credentials.sh
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+
+source ${SCRIPT_DIR}/_read_user_credentials.sh
 
 echo
 
-TOKEN=$(source ./scripts/generate-token.sh "" | tr -d "\n")
+TOKEN=$(source ${SCRIPT_DIR}/generate-token.sh "" | tr -d "\n")
 
 EXISTING_KEY=$(curl -s http://localhost:3000/api/v1/users/${USERNAME}/keys \
      -H 'Content-Type:application/json' \
